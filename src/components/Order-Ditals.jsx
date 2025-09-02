@@ -1,6 +1,6 @@
 import LineBox from "./mui-styles/LineBox";
 import StylePaper from "./mui-styles/StylePaper";
-import WithOutBroderButton from "./mui-styles/withOutBroderButton";
+import WithOutBroderButton from "./mui-styles/withOutBroderButton.jsx";
 
 export default function OrderDitales({CallBack}) {
 
