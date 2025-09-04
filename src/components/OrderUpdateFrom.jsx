@@ -32,7 +32,7 @@ const products = [
 
 function OrderUpdateFrom() {
   const [searchProduct, setSearchProduct] = useState("")
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
 
   const [status, setStatus] = useState("")
   const handelChange = (e) => {
@@ -49,7 +49,6 @@ function OrderUpdateFrom() {
 
   const handelSerach = (e) => {
     setSearchProduct(e.target.value)
-    setShow(false)
     console.log("filter: ", filterProduct);
 
   }
@@ -75,7 +74,7 @@ function OrderUpdateFrom() {
       width: 120,
       type: "number",
       editable: true,
-      renderCell: (params)=>{
+      renderCell: (params) => {
         <Box>+</Box>
       }
     },
@@ -135,6 +134,7 @@ function OrderUpdateFrom() {
           placeholder="All Product Here"
           value={searchProduct}
           onChange={handelSerach}
+          onClick={()=>setShow(true)}
           fullWidth
           InputProps={{
             sx: { height: 40 },
@@ -145,11 +145,11 @@ function OrderUpdateFrom() {
             ),
           }}
         />
-        <List>
-          {filterProduct.map((product) =><ListItem key={product.id}> 
-            {show? <ListItemText primary={"emty"} sx={{display: "none"}}/> : <ListItemText primary={product.name} />}
+        {show &&  (<List>
+          {filterProduct.map((product) => <ListItem key={product.id}>
+            <ListItemText primary={product.name} />
           </ListItem>)}
-        </List>
+        </List>)}
       </Paper>
 
       {/* DataGrid */}
